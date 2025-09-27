@@ -31,6 +31,7 @@
   outline: none;
   border: none;
   text-decoration: none;
+  background-color: var(--primary-Collor-two);
 }
 
 body {
@@ -58,12 +59,7 @@ body {
   color: var(--black-10);
 }
 
-/* Navbar Menu */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.4rem 7%;
+header {
   background-color: var(--primary-color-two);
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -71,6 +67,21 @@ body {
   left: 0;
   right: 0;
   z-index: 9999;
+}
+
+/* Navbar Menu */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 7%;
+  /* background-color: var(--primary-color-two);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1); */
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; */
+  /* z-index: 9999; */
 }
 
 .navbar .menu a {
@@ -225,7 +236,7 @@ button,
   left: 0;
   width: 110%; /* panjang garis = panjang teks */
   height: 1.1px;
-  background-color: var(--blue-500);
+  background-color: #f9fbfd;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -314,7 +325,7 @@ button,
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #f9fbfd;
+  /* background-color: #f9fbfd; */
   padding: 40px 7%;
 }
 
@@ -384,7 +395,12 @@ button,
 /* Media Queries */
 
 @media screen and (min-width: 1501px) {
-  * {
+  .navbar {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .hero {
     max-width: 1500px;
     margin: 0 auto;
   }
@@ -398,7 +414,7 @@ button,
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .hero-container {
     flex-direction: column;
     text-align: center;
@@ -415,12 +431,29 @@ button,
   .hero-image {
     margin-top: 30px;
   }
-}
+} */
 
 /* Tablet */
 @media (max-width: 768px) {
   html {
     font-size: 62.5%;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 34px;
+  }
+
+  .hero-text p {
+    margin: 0 auto;
+  }
+
+  .hero-image {
+    margin-top: 30px;
   }
 
   #hamburger-menu {
