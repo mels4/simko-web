@@ -1,0 +1,463 @@
+:root {
+  --blue-100: #d0e8f8;
+  --blue-200: #a4cff1;
+  --blue-300: #6fa3d5;
+  --blue-400: #4575ac;
+  --blue-500: #184076;
+  --blue-600: #113165;
+  --blue-700: #0c2454;
+  --blue-800: #071944;
+  --blue-900: #041138;
+  --primary-color-two: #ffffff;
+  --black-1: #ffffff;
+  --black-2: #fcfcfc;
+  --black-3: #f5f5f5;
+  --black-4: #f0f0f0;
+  --black-5: #d9d9d9;
+  --black-6: #bfbfbf;
+  --black-7: #8c8c8c;
+  --black-8: #595959;
+  --black-9: #454545;
+  --black-10: #262626;
+  --black-11: #1f1f1f;
+  --black-12: #141414;
+  --text-color-opacity: #ffffff8a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--primary-color-two);
+  color: var(--black-10);
+  letter-spacing: 0.06em; /* 6% dari ukuran font */
+}
+
+/* Navbar Logo */
+.logo {
+  display: flex; /* supaya gambar & teks sejajar */
+  align-items: center; /* vertikal sejajar */
+  gap: 10px; /* jarak antar gambar & teks */
+  text-decoration: none; /* hilangkan underline kalau logo dipakai di <a> */
+}
+
+.logo img {
+  height: 44px;
+}
+
+.logo-text {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--black-10);
+}
+
+/* Navbar Menu */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 7%;
+  background-color: var(--primary-color-two);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.navbar .menu a {
+  color: var(--black-9);
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 1rem;
+}
+
+.navbar .menu a:hover {
+  color: var(--blue-500);
+  font-weight: 500;
+}
+
+.navbar .menu a::after {
+  content: "";
+  display: block;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--blue-500);
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+
+.navbar .menu a:hover::after {
+  transform: scaleX(1.2);
+}
+
+.navbar .navbar-extra {
+  display: flex;
+  align-items: center; /* agar semua link & tombol sejajar vertikal */
+  gap: 12px; /* kasih jarak antar item biar rapi */
+}
+
+.navbar .navbar-extra a {
+  color: var(--black-9);
+  display: flex; /* biar ikon juga rata tengah */
+  align-items: center;
+}
+
+.navbar .navbar-extra a:hover {
+  color: var(--blue-700);
+}
+
+/* Tombol Daftar */
+.navbar .navbar-extra .register-button {
+  background: none;
+  color: var(--blue-500);
+  font-size: 14px;
+  font-weight: 600;
+  border: 1.5px solid transparent; /* border invisible biar stabil */
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px 24px;
+  transition: all 0.3s ease;
+}
+
+.navbar .navbar-extra .register-button:hover {
+  background-color: none;
+  color: var(--blue-500);
+  border-color: var(--blue-500); /* biar tombol terlihat */
+}
+
+/* Tombol Masuk */
+.navbar .navbar-extra .login-button {
+  background-color: var(--blue-500);
+  color: var(--black-1);
+  padding: 8px 24px 8px 24px;
+  text-decoration: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.navbar .navbar-extra .login-button:hover {
+  background-color: var(--blue-700);
+}
+
+button,
+.navbar .navbar-extra .login-button,
+.navbar .navbar-extra .register-button {
+  letter-spacing: 0.06em; /* 6% */
+}
+
+/* Popup Container */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+}
+
+/* Saat aktif → turun */
+.mobile-menu.active {
+  transform: translateY(0);
+}
+
+/* Header Popup */
+.mobile-header {
+  height: 80px; /* sama dengan desktop navbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 7%;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* Links */
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem 7%;
+}
+
+.mobile-links a {
+  font-size: 16px;
+  font-weight: 500;
+  color: #262626;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+  position: relative; /* supaya ::after bisa diposisikan */
+}
+.mobile-links a .text {
+  position: relative; /* supaya ::after nempel di teks */
+  display: inline-block;
+}
+
+.mobile-links a .text::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; /* jarak garis dengan teks */
+  left: 0;
+  width: 110%; /* panjang garis = panjang teks */
+  height: 1.1px;
+  background-color: var(--blue-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.mobile-links a:hover .text::after {
+  transform: scaleX(1);
+}
+
+.mobile-links a:hover {
+  color: var(--blue-500); /* efek hover ke teks */
+}
+
+.mobile-links a:hover i {
+  color: var(--blue-500); /* efek hover ke arrow */
+}
+
+/* Footer dalam hamburger */
+.hamburger-footer {
+  margin-top: auto;
+  padding: 20px 7% 40px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Tombol sejajar, tapi bisa fleksibel */
+.footer-buttons {
+  display: flex;
+  flex-direction: column; /* default stack (biar muat di layar kecil) */
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* Tombol Daftar */
+.footer-buttons .register-btn {
+  width: 100%; /* full width */
+  background: none;
+  color: var(--blue-500);
+  border: 1.5px solid var(--black-3);
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-buttons .register-btn:hover {
+  background-color: var(--blue-100);
+}
+
+/* Tombol Masuk */
+.footer-buttons .login-btn {
+  width: 100%; /* full width */
+  background-color: var(--blue-500);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.footer-buttons .login-btn:hover {
+  background-color: var(--blue-700);
+}
+
+/* Teks bawah tombol */
+.hamburger-footer p {
+  font-size: 13px;
+  color: var(--black-7);
+  line-height: 1.4;
+}
+
+#hamburger-menu {
+  display: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #f9fbfd;
+  padding: 40px 7%;
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Kiri: teks */
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--black-10);
+  line-height: 1.3;
+}
+
+.hero-text p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--black-7);
+  max-width: 550px;
+}
+
+/* Kanan: gambar */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-image img {
+  max-width: 540px;
+  width: 100%;
+}
+
+/* Tambahan dekorasi bintang */
+.hero-image::before,
+.hero-image::after {
+  content: "✦";
+  position: absolute;
+  font-size: 20px;
+  color: var(--blue-300);
+}
+
+.hero-image::before {
+  top: 15%;
+  left: -40px;
+}
+
+.hero-image::after {
+  bottom: 20%;
+  right: -30px;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 1501px) {
+  * {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+}
+
+/* Laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 34px;
+  }
+
+  .hero-text p {
+    margin: 0 auto;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  #hamburger-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar .menu {
+    display: none; /* sembunyikan menu desktop */
+  }
+
+  .navbar .login-button {
+    display: none;
+  }
+
+  .navbar .register-button {
+    display: none;
+  }
+}
+
+/* Responsive: kalau layar lebar (tablet / desktop), tombol sejajar */
+@media (min-width: 600px) {
+  .footer-buttons {
+    flex-direction: row; /* sejajar */
+  }
+
+  .footer-buttons .register-btn,
+  .footer-buttons .login-btn {
+    width: auto; /* tombol menyesuaikan isi */
+    flex: 1; /* sama-sama rata membagi lebar */
+  }
+}
+
+/* Mobile Phone */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}
